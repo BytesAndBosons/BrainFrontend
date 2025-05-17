@@ -17,11 +17,11 @@ function rgbToHex(color: { r: number, g: number, b: number }): string {
     return `#${((1 << 24) + (color.r << 16) + (color.g << 8) + color.b).toString(16).slice(1)}`;
 }
 
-function randomlyScaleColor(hexColorIn: string): string {
+function randomlyScaleColor(hexColorIn: string, variation: number): string {
 
     const rgbColorIn = hexToRgb(hexColorIn);
     let rgbColorOut = rgbColorIn;
-    const scalingFactor = Math.random() * 0;
+    const scalingFactor = Math.random() * variation;
 
     rgbColorOut.r += Math.round((255 - rgbColorIn.r) * scalingFactor);
     rgbColorOut.g += Math.round((255 - rgbColorIn.g) * scalingFactor);
@@ -50,7 +50,7 @@ export const ColorButton: React.FC<{ ref: string, children: React.ReactNode }> =
             if (ind[ref].passwordProtected && !isLoggedIn) {
                 baseColor = "#6c757d";
             }
-            setButtonColor(randomlyScaleColor(baseColor));
+            setButtonColor(randomlyScaleColor(baseColor, 0)); // color variation to zero
             setFullyLoaded(true);
         }).catch(err => console.log(err))
     }, [isLoggedIn])
