@@ -1,0 +1,38 @@
+
+.custom-table thead th {
+  background-color: #f8f9fa !important;
+  color: black !important;
+  border-color: #dee2e6;
+}
+
+.custom-table tbody th {
+    background-color: #f8f9fa !important;
+    border-left: 0px solid #f8f9fa;
+    border-top: 0px solid #f8f9fa;
+    border-bottom: 0px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    color: black;
+}
+
+.custom-table {
+    border: 0px solid #dee2e6;
+    border-radius: 8px;
+    border-collapse: separate;
+    overflow: hidden; 
+    border-spacing: 0;
+}
+
+.custom-table tbody tr:last-child {
+    border-bottom: 0px solid white;
+}
+
+.table {
+    margin-bottom: 0px;
+}
+
+.table-container {
+    overflow-x: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
