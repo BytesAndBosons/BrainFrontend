@@ -1,0 +1,25 @@
+/* ================================================= */
+/* Change spacing before h3                          */
+/* ================================================= */
+h3 {
+    margin-top: 1em;
+  }
+  
+  .accordion-body>h3:first-child {
+    margin-top: 0;
+  }
+  
+  /* ================================================= */
+  /* Change color of accordion group                   */
+  /* ================================================= */
+  .accordion-button:not(.collapsed) {
+    background-color: #f8f9fa !important;
+    color: #000000 !important;
+  }
+  
+  /* ================================================= */
+  /* Change color of a                                 */
+  /* ================================================= */
+  a {
+    color: #d63384;
+  }
