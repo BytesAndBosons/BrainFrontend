@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "./styles/App.css";
 import { NavBar } from "./Navbar.tsx";
 import { Overview } from "./Overview.tsx";
 import { NavigationContext } from "./contextProviders/NavigationContextProvider.tsx";

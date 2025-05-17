@@ -17,6 +17,8 @@
 .snippet-card-body {
   text-align: left;
   background-color: #f8f9fa;
+  font-family: 'Menlo';
+  font-size: 12pt;
 }
 
 .lang {

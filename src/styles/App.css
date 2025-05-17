@@ -1,0 +1,26 @@
+/* ================================================= */
+/* Change spacing before h3, h4                      */
+/* ================================================= */
+h3 {
+  margin-top: 1em;
+  margin-bottom: 0.4em;
+}
+  
+.accordion-body>h3:first-child {
+  margin-top: 0;
+}
+
+h4 {
+  margin-top: 1em;
+}
+  
+.accordion-body>h4:first-child {
+  margin-top: 0;
+}
+  
+/* ================================================= */
+/* Change color of a                                 */
+/* ================================================= */
+a {
+  color: #d63384;
+}

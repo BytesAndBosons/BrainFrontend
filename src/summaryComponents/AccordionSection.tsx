@@ -1,5 +1,5 @@
 import { Accordion } from 'react-bootstrap';
-import './AccordionSection.css';
+import './styles/AccordionSection.css';
 
 export const AccordionSection: React.FC<{ title: string | null, children: React.ReactNode }> = ({ title, children }) => {
 
