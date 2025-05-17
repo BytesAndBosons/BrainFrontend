@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {CodeStyler, Styler} from "./scripts/CodeStyler";
+import { CodeStyler, Styler } from "./scripts/CodeStyler";
 import './styles/CodeSnippet.css';
 
 export const CodeSnippet: React.FC<{ lang: string | null, title: string | null, children: React.ReactNode }> = ({ lang, title, children }) => {
@@ -8,24 +8,24 @@ export const CodeSnippet: React.FC<{ lang: string | null, title: string | null, 
   const ref = useRef<HTMLDivElement>(null);
 
   const stylizeText = () => {
-    
+
     let text: string = "";
-    
+
     if (ref.current) {
       text = ref.current.textContent ?? "";
 
       // Create snippet styler
       let styler: Styler = new CodeStyler(lang ?? "default");
-  
+
       // Stylize code
-      let innerHTMLStyled: string = '<pre>' + styler.getStylizedText(text) + '</pre>';
-  
+      let innerHTMLStyled: string = '<pre> ' + styler.getStylizedText(text) + '</pre>';
+
       ref.current.innerHTML = innerHTMLStyled;
-    
+
     }
   }
 
-  useEffect(() => stylizeText(),[children,lang]);
+  useEffect(() => stylizeText(), [children, lang]);
 
   const copyText = () => {
     setEmoji('✅');
@@ -49,11 +49,10 @@ export const CodeSnippet: React.FC<{ lang: string | null, title: string | null, 
         </div>
       </div >
       <div className="card-body snippet-card-body rounded-bottom" ref={ref}>
-        <code className="snippet-code">
+        <pre>
           {children}
-        </code>
+        </pre>
       </div>
     </div>
-
   );
 }

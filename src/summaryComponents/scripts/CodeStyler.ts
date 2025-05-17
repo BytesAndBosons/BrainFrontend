@@ -109,15 +109,8 @@ export class GenericCodeStyler {
     // Remove unwanted whitespaces
     protected eatWhiteSpaces(text: string): string {
 
-        // Eat away whitespaces in beginning
-        while (text[0] == " ") {
-            text = text.slice(1);
-        }
-
-        // Eat away newline in beginning
-        if (text[0] == "\n") {
-            text = text.slice(1);
-        }
+        // If the text starts with an arbitrary number of whitespaces and a newline, remove them
+        text = text.replace(/^\s*\n/, '');
 
         // Eat away whitespaces in beginning and determine linedepth
         let lineDepth: number = 0;
@@ -132,7 +125,7 @@ export class GenericCodeStyler {
         }
 
         // Eat away whitespaces after each newline to match linedepth
-        text = text.replaceAll("\n" + " ".repeat(lineDepth), "\n");
+        text = text.replaceAll("\n" + " ".repeat(lineDepth-1), "\n");
 
         return text;
     }
@@ -169,8 +162,6 @@ export class GenericCodeStyler {
                     text = text.slice(0, currentInd) + text_insertion + text.slice(currentEnd + 1);
                     currentInd = currentInd + text_insertion.length;
                 }
-
-                //console.log(`Current index: ${text.slice(currentInd, currentInd+2)}`)
 
                 currentInd = text.indexOf(ssgn, currentInd + 1);
 
