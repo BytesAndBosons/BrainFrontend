@@ -24,3 +24,7 @@ h4 {
 a {
   color: #d63384;
 }
+
+ul ul {
+  list-style-type: "– ";
+}
