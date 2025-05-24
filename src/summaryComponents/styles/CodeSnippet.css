@@ -4,7 +4,19 @@
 }
 
 .snippet-card {
-  margin-bottom: 15px;
+  /* Big screens */
+  margin-top: 25px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* Small screens */
+@media (max-width: 60em) {
+  .snippet-card {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 }
 
 .snippet-card-head {

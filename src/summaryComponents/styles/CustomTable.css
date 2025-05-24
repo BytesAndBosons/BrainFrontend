@@ -30,9 +30,21 @@
     margin-bottom: 0px;
 }
 
+/* Big screens */
 .table-container {
     overflow-x: auto;
     border: 1px solid #dee2e6;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+/* Small screens */
+@media (max-width: 60em) {
+  .table-container {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 }

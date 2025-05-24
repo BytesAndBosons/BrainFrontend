@@ -117,22 +117,25 @@ export const NavBar: React.FC = () => {
               </NavDropdown>
             ))}
           </Nav>
-          {isLoggedIn ? (
-            <Button
-              variant="outline-light"
-              onClick={(_) => logout(setLoggedIn, setNames)}
-              className=""
-            >
-              Logout
-            </Button>
-          ) : (
-            <Button
-              variant="outline-light"
-              onClick={(_) => setNavigation("login")}
-            >
-              Login
-            </Button>
-          )}
+
+          <div className="my-3 my-lg-0">
+            {isLoggedIn ? (
+              <Button
+                variant="outline-light"
+                onClick={(_) => logout(setLoggedIn, setNames)}
+                className=""
+              >
+                Logout
+              </Button>
+            ) : (
+              <Button
+                variant="outline-light"
+                onClick={(_) => setNavigation("login")}
+              >
+                Login
+              </Button>
+            )}
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

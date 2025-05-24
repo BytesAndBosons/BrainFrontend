@@ -39,7 +39,7 @@ export class CodeStyler implements Styler {
                 this.styler = new GenericCodeStyler(["#"], [], ["\""], charsKeys, colors);
                 break;
             case "python":
-                this.styler = new GenericCodeStyler(["#"], ["import", "from", "def", "if", "not", "for", "while", "class", "DataBlock", "ImageBlock", "CategoryBlock", "RandomSplitter", "Resize", "Path", "ResizeMethod", "RandomResizedCrop", "ClassificationInterpretation", "numpy", "pandas", "torch", "np", "pd", "df"], ["\"", "\'"], charsKeys, colors);
+                this.styler = new GenericCodeStyler(["#"], ["import", "from", "def", "if", "not", "for", "while", "class", "DataBlock", "ImageBlock", "CategoryBlock", "RandomSplitter", "Resize", "Path", "ResizeMethod", "RandomResizedCrop", "ClassificationInterpretation", "numpy", "pandas", "torch", "np", "pd", "df", "str", "int", "bytes", "float", "bool", "list", "tuple", "set", "dict", "Optional", "Union", "return", "async", "await"], ["\"", "\'"], charsKeys, colors);
                 break;
             case "yaml":
                 this.styler = new GenericCodeStyler(["#"], [], ["\"", "\'"], charsKeys, colors);
@@ -125,9 +125,9 @@ export class GenericCodeStyler {
         }
 
         // Eat away whitespaces after each newline to match linedepth
-        text = text.replaceAll("\n" + " ".repeat(lineDepth-1), "\n");
+        text = text.replaceAll("\n" + " ".repeat(lineDepth-1), " \n");
 
-        return text;
+        return text + " ";
     }
 
     // Stylize the keywords defined in this.keyWords
