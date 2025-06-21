@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import JsxParser from 'react-jsx-parser';
 import { NavigationContext } from "./contextProviders/NavigationContextProvider";
+import { Image } from "./summaryComponents/Image";
 import { CodeSnippet } from "./summaryComponents/CodeSnippet";
 import { Alert, Container } from "react-bootstrap";
 import { AccordionSection } from "./summaryComponents/AccordionSection";
@@ -52,7 +53,7 @@ export const Summary: React.FC = () => {
 
       try {
 
-        const DynamicComponent = () => (<JsxParser components={{ CodeSnippet, AccordionSection, ColorButton, CustomTable }} jsx={tsxCode} onError={(err: any) => { console.log(err); }} />);
+        const DynamicComponent = () => (<JsxParser components={{ CodeSnippet, AccordionSection, ColorButton, CustomTable, Image }} jsx={tsxCode} onError={(err: any) => { console.log(err); }} />);
 
         setComponent(() => DynamicComponent);
 
