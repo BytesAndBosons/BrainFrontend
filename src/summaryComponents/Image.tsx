@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { NavigationContext } from "../contextProviders/NavigationContextProvider";
+import './styles/Image.css';
 
 
-export const Image: React.FC<{ src: string, width: string }> = ({ src, width }) => {
+export const Image: React.FC<{ src: string, width: string, caption: string | null }> = ({ src, width, caption }) => {
 
     const { navigation, setNavigation } = useContext(NavigationContext);
     const [image, setImage] = useState<Blob | null>(null);
@@ -48,7 +49,12 @@ export const Image: React.FC<{ src: string, width: string }> = ({ src, width }) 
 
     return (
         <>
-            {image && <img src={URL.createObjectURL(image)} width={width} />}
+            {image &&
+
+                <figure className="figure mb-5 mt-3">
+                    <img src={URL.createObjectURL(image)} width={width} className="paper-image img-thumbnail" />
+                    {caption && <figcaption className="figure-caption mt-3"><b>Figure: </b>{caption}</figcaption>}
+                </figure>}
         </>
     )
 }
