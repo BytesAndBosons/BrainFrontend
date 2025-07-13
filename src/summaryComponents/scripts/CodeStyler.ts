@@ -30,7 +30,7 @@ export class CodeStyler implements Styler {
                 this.styler = new GenericCodeStyler(["//"], ["if", "return", "class", "else", "for", "public", "protected", "private", "const", "virtual", "void", "bool"], ["\"", "\'"], charsKeys, colors);
                 break;
             case "bash":
-                this.styler = new GenericCodeStyler(["#"], ["minikube", "install", "podman", "helm", "kubectl", "brew", "npm", "tsc", "terraform", "ansible", "config", "dump", "ping", "docker", "build", "push", "run", "docker-compose", "up", "down"], ["\""], charsKeys, colors);
+                this.styler = new GenericCodeStyler(["#"], ["minikube", "install", "podman", "kubeadm", "kubelet", "update", "containerd", "helm", "kubectl", "brew", "npm", "tsc", "terraform", "ansible", "config", "dump", "ping", "docker", "build", "push", "run", "docker-compose", "up", "down"], ["\""], charsKeys, colors);
                 break;
             case "terraform":
                 this.styler = new GenericCodeStyler(["#"], ["depends_on", "terraform", "backend", "resource", "variable","variables", "module", "output", "provider", "data", "locals", "local", "for", "in", "if", "import", "run", "provisioner", "lifecycle", "state", "moved"], ["\""], charsKeys, colors);
