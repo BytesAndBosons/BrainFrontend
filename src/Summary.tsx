@@ -7,6 +7,7 @@ import { Alert, Container } from "react-bootstrap";
 import { AccordionSection } from "./summaryComponents/AccordionSection";
 import { ColorButton } from "./ColorButton";
 import { CustomTable } from "./summaryComponents/CustomTable";
+import { TexSnippet } from "./summaryComponents/TexSnippet";
 
 
 type SummaryResponse = {
@@ -53,7 +54,7 @@ export const Summary: React.FC = () => {
 
       try {
 
-        const DynamicComponent = () => (<JsxParser components={{ CodeSnippet, AccordionSection, ColorButton, CustomTable, Image }} jsx={tsxCode} onError={(err: any) => { console.log(err); }} />);
+        const DynamicComponent = () => (<JsxParser components={{ CodeSnippet, TexSnippet, AccordionSection, ColorButton, CustomTable, Image }} jsx={tsxCode} onError={(err: any) => { console.log(err); }} />);
 
         setComponent(() => DynamicComponent);
 

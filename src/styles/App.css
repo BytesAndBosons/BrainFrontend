@@ -28,3 +28,12 @@ a {
 ul ul {
   list-style-type: "– ";
 }
+
+/* ================================================= */
+/* Fonts                                             */
+/* ================================================= */
+@font-face {
+  font-family: 'Latin Modern Math';
+  src: url('../assets/fonts/latinmodern-math.woff2') format('woff2'),
+    url('../assets/fonts/latinmodern-math.woff') format('woff');
+}
