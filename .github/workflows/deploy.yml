@@ -1,0 +1,82 @@
+name: Deploy Frontend via FTP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: FTP
+
+    env:
+      FTP_USER: ${{ secrets.FTP_USER }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Install lftp
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+
+      - name: Deploy via FTP
+        shell: bash
+        run: |
+          echo "Starting FTP deployment..."
+
+          # Collect files from dist/
+          mapfile -t FILE_LIST < <(find dist/ -type f)
+
+          echo " "
+          echo "======================================================="
+          echo "Changed/added files"
+          for FILE in "${FILE_LIST[@]}"; do
+            echo "$FILE"
+          done
+          echo "======================================================="
+
+          for FILE in "${FILE_LIST[@]}"; do
+            RELATIVE_PATH=${FILE#dist/}
+            echo "Uploading $FILE as $RELATIVE_PATH..."
+
+            # Create directories and upload file
+            lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_SERVER" <<EOF
+          set ftp:mkdir-subdirs yes
+          put "$FILE" -o "$RELATIVE_PATH"
+          bye
+          EOF
+          done
