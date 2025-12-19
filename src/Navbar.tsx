@@ -15,6 +15,7 @@ import { LoginContext } from "./contextProviders/LoginContextProvider.tsx";
 import { NavigationContext } from "./contextProviders/NavigationContextProvider.tsx";
 // React
 import { useContext, useEffect, useState } from "react";
+import { checkLoggedIn } from "./helperFunctions/checkLoggedIn.ts";
 
 
 
@@ -43,6 +44,11 @@ export const NavBar: React.FC = () => {
 
   const defaultIndex: IndexJSON = {}
   const [index, setIndex] = useState(defaultIndex);
+
+  // Check whether user is logged in
+  useEffect(() => {
+    checkLoggedIn(setLoggedIn, setNames);
+  }, []);
 
 
   // Load index.json

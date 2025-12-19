@@ -1,19 +1,16 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
+import { StrictMode } from "react";
+import { BrowserRouter } from "react-router-dom";
 import { LoginContextProvider } from "./contextProviders/LoginContextProvider.tsx";
 import { NavigationContextProvider } from "./contextProviders/NavigationContextProvider.tsx";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <LoginContextProvider>
         <NavigationContextProvider>
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/:section/*" element={<App />} />
-          </Routes>
+          <App />
         </NavigationContextProvider>
       </LoginContextProvider>
     </BrowserRouter>
