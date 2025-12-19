@@ -1,24 +1,48 @@
-import { createContext, useState } from "react";
+import React, { createContext, useMemo } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-// define the type of the context
 interface NavigationContextType {
     navigation: string;
-    setNavigation: (arg1: string) => void;
+    setNavigation: (value: string) => void;
 }
 
-// create context
 export const NavigationContext = createContext<NavigationContextType>({
     navigation: "overview",
-    setNavigation: (_: string) => {}
-})
+    setNavigation: (_: string) => { }
+});
 
-export const NavigationContextProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
+const navigationFromPath = (pathname: string): string => {
+    const segments = pathname.split("/").filter(Boolean); // remove empty strings 
+    const first = segments[0];
+    return first ?? "overview"; // return "overview" by default
+};
 
-    const [navigation, setNavigation] = useState<string>("overview");
+export const NavigationContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const navigation = useMemo(
+        () => navigationFromPath(location.pathname),
+        [location.pathname]
+    );
+
+    const setNavigation = (value: string) => {
+        if (value == "overview") {
+            navigate("/", { replace: false });
+        } else {
+            navigate(`/${value}`, { replace: false });
+        }
+    };
+
+    const ctxValue = useMemo(
+        () => ({ navigation, setNavigation }),
+        [navigation]
+    )
 
     return (
-        <NavigationContext.Provider value={{ navigation, setNavigation }}>
+        <NavigationContext.Provider value={ctxValue}>
             {children}
         </NavigationContext.Provider>
-    )
-}
+    );
+};
