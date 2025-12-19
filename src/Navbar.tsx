@@ -79,7 +79,7 @@ export const NavBar: React.FC = () => {
   return (
     <Navbar expand="lg" className="navbar-dark bg-dark">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="">
           <img
             src={brainLogo}
             alt=""
