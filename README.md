@@ -14,4 +14,7 @@ In order to run the code locally, use
 npm run dev
 ```
 
-The deployment to the web server is done automatically via a GitLab CI/CD pipeline. The pipeline builds the website via `npm run build` and uploads the generated files to the server via FTP. 
+The deployment to the web server is done automatically via a GitLab CI/CD pipeline. The pipeline builds the website via `npm run build` and uploads the generated files to the server via FTP.
+
+## Sources
+Logo: Brain by Sergey Patutin from <a href="https://thenounproject.com/browse/icons/term/brain/" target="_blank" title="Brain Icons">Noun Project</a> (CC BY 3.0)
