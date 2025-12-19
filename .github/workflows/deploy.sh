@@ -17,7 +17,7 @@ lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_SERVER" <<EOF
 set ftp:passive-mode on
 set ftp:list-options -a
 
-mirror --reverse --delete  --verbose --exclude "^backend(/|\$)" "$LOCAL_DIR" "$REMOTE_DIR"
+mirror --reverse --delete  --verbose --exclude "(^backend(/|\$)|(^|/)\.htaccess$)" "$LOCAL_DIR" "$REMOTE_DIR"
 
 bye
 EOF
