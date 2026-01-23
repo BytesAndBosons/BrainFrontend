@@ -1,17 +1,58 @@
+/* =========================
+   Accordion
+   ========================= */
+
 .accordion {
     margin-bottom: 20px;
 }
-  
+
+/* Remove Bootstrap focus ring */
 .accordion-button:focus {
     box-shadow: none !important;
 }
 
-.accordion-button {
-    background-color: #f8f9fa;
-    color: black;
+/* Accordion item = paper card */
+.accordion-item {
+    background-color: var(--paper-alt);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
 }
-  
+
+/* Header */
+.accordion-button {
+    background-color: var(--paper-alt);
+    color: var(--ink-dark);
+    font-weight: 500;
+    padding: 0.9rem 1.25rem;
+    transition:
+        background-color 120ms ease,
+        color 120ms ease,
+        box-shadow 120ms ease;
+}
+
+/* Hover = lift */
+.accordion-button:hover {
+    background-color: var(--paper-light);
+}
+
+/* Expanded header */
 .accordion-button:not(.collapsed) {
-    background-color: #f8f9fa;
-    color: black;
+    background-color: var(--paper-light);
+    color: var(--ink-dark);
+    box-shadow: inset 4px 0 0 var(--accent-orange);
+}
+
+/* Body */
+.accordion-body {
+    background-color: var(--paper-light);
+    color: var(--ink-dark);
+    border-top: 1px solid var(--border-soft);
+    padding: 1rem 1.25rem;
+}
+
+/* Optional: subtle depth */
+.accordion-item {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }

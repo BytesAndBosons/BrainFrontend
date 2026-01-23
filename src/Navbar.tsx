@@ -83,7 +83,7 @@ export const NavBar: React.FC = () => {
   });
 
   return (
-    <Navbar expand="lg" className="navbar-dark bg-dark">
+    <Navbar expand="lg">
       <Container>
         <Navbar.Brand href="">
           <img
@@ -127,16 +127,15 @@ export const NavBar: React.FC = () => {
           <div className="my-3 my-lg-0">
             {isLoggedIn ? (
               <Button
-                variant="outline-light"
                 onClick={(_) => logout(setLoggedIn, setNames)}
-                className=""
+                className="btn-sakura"
               >
                 Logout
               </Button>
             ) : (
               <Button
-                variant="outline-light"
-                onClick={(_) => setNavigation("login")}
+                  onClick={(_) => setNavigation("login")}
+                  className="btn-sakura"
               >
                 Login
               </Button>

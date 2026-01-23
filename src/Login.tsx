@@ -42,7 +42,7 @@ export const Login = () => {
   };
 
   return (
-    <Container className="d-flex flex-column min-vh-100 my-5">
+    <Container className="login-container d-flex flex-column min-vh-100 my-5">
       <h1>Login</h1>
       <div className="col-lg-8 px-0">
         <hr className="col-1 my-4" />
@@ -96,7 +96,7 @@ export const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-secondary btn-block">
+          <button type="submit" className="btn btn-primary">
             Login
           </button>
         </form>

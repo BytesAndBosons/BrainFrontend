@@ -13,8 +13,7 @@ export const ColorButton: React.FC<{ ref: string, children: React.ReactNode }> =
     const defaultIndex: IndexJSON = {};
     const [index, setIndex] = useState(defaultIndex);
     const [fullyLoaded, setFullyLoaded] = useState(false);
-    const [buttonColor, setButtonColor] = useState<string>("#d63384");
-    const [textColor, setTextColor] = useState<string>("#ffffff");
+    const [buttonClass, setButtonClass] = useState<string>("btn-primary");
 
     // Load index.json and set button color
     useEffect(() => {
@@ -22,8 +21,7 @@ export const ColorButton: React.FC<{ ref: string, children: React.ReactNode }> =
             setIndex(ind);
 
             if (ind[ref].passwordProtected && !isLoggedIn) {
-                setButtonColor("#272930");
-                setTextColor("#b2b2b2");
+                setButtonClass("btn-locked");
             }
             setFullyLoaded(true);
         }).catch(err => console.log(err))
@@ -36,7 +34,7 @@ export const ColorButton: React.FC<{ ref: string, children: React.ReactNode }> =
 
     if (fullyLoaded) {
         return (
-            <Button onClick={toSummary} style={{ backgroundColor: buttonColor, border: buttonColor, color: textColor }}>{(index[ref] && index[ref].passwordProtected && !isLoggedIn) ? "🔒 " : ""}{children}</Button>
+            <Button onClick={toSummary} className={buttonClass}>{(index[ref] && index[ref].passwordProtected && !isLoggedIn) ? "🔒 " : ""}{children}</Button>
         )
     } else {
         return (<></>);

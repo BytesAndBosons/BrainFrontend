@@ -14,7 +14,7 @@ export class CodeStyler implements Styler {
     constructor(protected codingLang: string) {
 
         let charsKeys: string[] = [" ", "(", ")", "[", "]", "{", "}", ",", ":", ";", "&lt;", "&gt;", "\n"];
-        let colors: string[] = ["gray", "teal", "steelblue"];
+        let colors: string[] = ["#7D808A", "#D19A66", "#98C379"];
 
         // Make sure codingLang is lowercase
         codingLang = codingLang.toLowerCase();

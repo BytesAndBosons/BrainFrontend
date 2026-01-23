@@ -17,13 +17,6 @@ h4 {
 .accordion-body>h4:first-child {
   margin-top: 0;
 }
-  
-/* ================================================= */
-/* Change color of a                                 */
-/* ================================================= */
-a {
-  color: #d63384;
-}
 
 ul ul {
   list-style-type: "– ";
@@ -36,4 +29,256 @@ ul ul {
   font-family: 'Latin Modern Math';
   src: url('../assets/fonts/latinmodern-math.woff2') format('woff2'),
     url('../assets/fonts/latinmodern-math.woff') format('woff');
+}
+
+
+/* =========================
+   Sakura Theme – Paper Edition
+   ========================= */
+
+:root {
+  /* Accent */
+  --accent-orange: rgb(197, 95, 58);
+
+  /* Ink */
+  --ink-dark: rgb(26, 26, 26);
+  --ink-light: rgb(62, 62, 62);
+
+  /* Paper */
+  --paper-light: #FAF7F2;
+  --paper-alt: #F1ECE4;
+
+  /* Borders */
+  --border-soft: #D6CFC7;
+
+  /* Muted / disabled */
+  --muted-text: #9A9A9A;
+  --disabled-bg: #EEE9E2;
+
+  /* Navbar */
+  --nav-bg: var(--ink-dark);
+  --nav-text: #FFFFFF;
+}
+
+/* ---- Page background ---- */
+body {
+  background-color: var(--paper-alt);
+  color: var(--ink-dark);
+}
+
+/* ---- Main content paper ---- */
+/* Apply this to your main container */
+.bg-paper {
+  background-color: var(--paper-light);
+  color: var(--ink-dark);
+}
+
+/* ---- Links (wood ink) ---- */
+a {
+  color: var(--accent-orange);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* ---- Inline code ---- */
+code {
+  background-color: rgba(184, 154, 120, 0.18);
+  color: #4A3627;
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+/* ---- Code blocks ---- */
+pre {
+  background-color: #2A2A30;
+  color: #EDEDED;
+  border-radius: 10px;
+}
+
+code {
+  background-color: rgba(197, 95, 58, 0.15);
+  color: rgb(155, 70, 40);
+}
+
+/* =========================
+   Primary Button
+   ========================= */
+
+.btn-primary {
+  background-color: var(--accent-orange);
+  border-color: var(--accent-orange);
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 600;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease,
+    transform 80ms ease;
+}
+
+/* Hover: subtle lift */
+.btn-primary:hover {
+  background-color: rgb(180, 85, 50);
+  border-color: rgb(180, 85, 50);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* Active: pressed */
+.btn-primary:active {
+  background-color: rgb(155, 70, 40) !important;
+  border-color: rgb(155, 70, 40) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.25),
+    0 1px 2px rgba(0, 0, 0, 0.15);
+  transform: translateY(2px);
+}
+
+/* Focus-visible: clean, not glowy */
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--paper-light),
+    0 0 0 4px rgba(197, 95, 58, 0.6);
+}
+
+/* =========================
+   Secondary Button
+   ========================= */
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--ink-light);
+  color: var(--ink-light);
+  border-radius: 999px;
+  transition:
+    background-color 120ms ease,
+    color 120ms ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--ink-light);
+  color: #fff;
+}
+
+/* =========================
+   Locked Button (inert)
+   ========================= */
+
+.btn-locked {
+  background-color: var(--disabled-bg);
+  border: 1px dashed var(--border-soft);
+  color: var(--muted-text);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Explicitly prevent interaction feedback */
+/* Explicitly prevent interaction feedback */
+.btn-locked:hover,
+.btn-locked:active,
+.btn-locked:focus,
+.btn-locked:focus-visible {
+  background-color: var(--disabled-bg) !important;
+  border-color: var(--border-soft) !important;
+  color: var(--muted-text) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* ---- Alerts ---- */
+.alert-dark {
+  background-color: var(--paper-alt);
+  border: 1px solid var(--border-soft);
+  color: var(--ink-dark);
+  border-radius: 8px;
+}
+
+.alert-danger {
+  background-color: #F6E4E6;
+  color: #7A2E3A;
+  border: 1px solid #E2B7BE;
+  border-radius: 8px;
+}
+
+/* ---- Input group ---- */
+.input-group-text {
+  background-color: var(--paper-alt);
+  border: 1px solid var(--border-soft);
+  color: var(--ink-muted);
+  font-size: 1rem;
+}
+
+/* Text inputs */
+.form-control {
+  background-color: var(--paper-light);
+  border: 1px solid var(--border-soft);
+  color: var(--ink-dark);
+}
+
+.form-control::placeholder {
+  color: #9A8F8A;
+}
+
+/* Focus state */
+.form-control:focus {
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 0 0.15rem rgba(184, 154, 120, 0.35);
+}
+
+/* =========================
+   Login
+   ========================= */
+
+/* Info alert */
+.alert-dark {
+  background-color: rgba(197, 95, 58, 0.18);
+  border: 1px rgba(197, 95, 58, 0.18);
+  color: var(--ink-dark);
+  border-radius: 8px;
+}
+
+/* Error alert */
+.alert-danger {
+  background-color: #F6E1DA;
+  border: 1px solid rgba(197, 95, 58, 0.35);
+  color: rgb(155, 70, 40);
+  border-radius: 8px;
+}
+
+.form-control {
+  background-color: var(--paper-light);
+  border: 1px solid var(--border-soft);
+  color: var(--ink-dark);
+  font-size: 1rem;
+}
+
+.form-control::placeholder {
+  color: var(--muted-text);
+}
+
+/* Focus: orange, but restrained */
+.form-control:focus {
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 0 0.15rem rgba(197, 95, 58, 0.3);
+}
+
+.login-container form {
+  margin-top: 1.5rem;
+}
+
+.login-container .btn-primary {
+  margin-top: 0.5rem;
+}
+
+.form-control,
+.input-group-text {
+  border-radius: 8px;
 }

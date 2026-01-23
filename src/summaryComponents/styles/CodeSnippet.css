@@ -1,55 +1,66 @@
-.pre {
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
+/* =========================
+   Snippet Cards (Code)
+   ========================= */
 
 .snippet-card {
-  /* Big screens */
-  margin-top: 25px;
-  margin-bottom: 30px;
-  margin-left: 30px;
-  margin-right: 30px;
+  background-color: var(--paper-alt);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  margin: 25px 30px 30px 30px;
+  overflow: hidden;
 }
 
 /* Small screens */
 @media (max-width: 60em) {
   .snippet-card {
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
 .snippet-card-head {
   text-align: right;
-  padding-right: 0px;
-  padding-top: 5px;
-  padding-left: 10px;
+  padding: 5px 10px 5px 10px;
+  background-color: var(--paper-light);
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .snippet-card-body {
-  text-align: left;
-  background-color: #f8f9fa;
-  font-family: 'Menlo';
+  background-color: #2A2A30;
+  color: #EDEDED;
+  font-family: 'Menlo', monospace;
   font-size: 12pt;
+  padding: 0.75rem 1rem;
+  white-space: pre;
+  overflow-x: auto;
+  border-left: 4px solid transparent;
+  /* for active accent */
+  transition: border-color 120ms ease;
 }
 
-.lang {
-  font-family: 'Menlo';
-  font-size: 9pt;
+/* Optional: highlight active snippet with accent (like accordion) */
+.snippet-card.active .snippet-card-body {
+  border-left-color: var(--accent-orange);
 }
 
-.snippet-code {
-  color: #000000;
-  padding-bottom: -30px;
-}
-
+/* Snippet buttons */
 .snippet-btn {
-  outline: none;
   border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 .snippet-btn:focus {
   outline: none;
-  border: none;
 }
-  
+
+/* Language label */
+.lang {
+  font-family: 'Menlo', monospace;
+  font-size: 9pt;
+  color: var(--ink-light);
+}
