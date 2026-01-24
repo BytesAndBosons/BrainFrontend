@@ -22,9 +22,9 @@ ul ul {
   list-style-type: "– ";
 }
 
-/* ================================================= */
-/* Fonts                                             */
-/* ================================================= */
+/* =============================
+    Fonts
+   ============================= */
 @font-face {
   font-family: 'Latin Modern Math';
   src: url('../assets/fonts/latinmodern-math.woff2') format('woff2'),
@@ -32,9 +32,9 @@ ul ul {
 }
 
 
-/* =========================
-   Sakura Theme – Paper Edition
-   ========================= */
+/* =============================
+    Theme Colors (Amber Scroll)
+   ============================= */
 
 :root {
   /* Accent */
@@ -51,7 +51,7 @@ ul ul {
   /* Borders */
   --border-soft: #D6CFC7;
 
-  /* Muted / disabled */
+  /* Disabled */
   --muted-text: #9A9A9A;
   --disabled-bg: #EEE9E2;
 
@@ -60,20 +60,16 @@ ul ul {
   --nav-text: #FFFFFF;
 }
 
+/* =============================
+    Main Settings
+   ============================= */
 /* ---- Page background ---- */
 body {
   background-color: var(--paper-alt);
   color: var(--ink-dark);
 }
 
-/* ---- Main content paper ---- */
-/* Apply this to your main container */
-.bg-paper {
-  background-color: var(--paper-light);
-  color: var(--ink-dark);
-}
-
-/* ---- Links (wood ink) ---- */
+/* ---- Links ---- */
 a {
   color: var(--accent-orange);
   text-decoration: none;
@@ -86,14 +82,6 @@ a:hover {
   text-underline-offset: 3px;
 }
 
-/* ---- Inline code ---- */
-code {
-  background-color: rgba(184, 154, 120, 0.18);
-  color: #4A3627;
-  padding: 0.15em 0.35em;
-  border-radius: 6px;
-  font-size: 0.9em;
-}
 
 /* ---- Code blocks ---- */
 pre {
@@ -102,15 +90,16 @@ pre {
   border-radius: 10px;
 }
 
+/* Inline code */
 code {
   background-color: rgba(197, 95, 58, 0.15);
   color: rgb(155, 70, 40);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.9em;
 }
 
-/* =========================
-   Primary Button
-   ========================= */
-
+/* ---- Buttons ---- */
 .btn-primary {
   background-color: var(--accent-orange);
   border-color: var(--accent-orange);
@@ -149,10 +138,6 @@ code {
     0 0 0 4px rgba(197, 95, 58, 0.6);
 }
 
-/* =========================
-   Secondary Button
-   ========================= */
-
 .btn-secondary {
   background-color: transparent;
   border: 1px solid var(--ink-light);
@@ -168,10 +153,6 @@ code {
   color: #fff;
 }
 
-/* =========================
-   Locked Button (inert)
-   ========================= */
-
 .btn-locked {
   background-color: var(--disabled-bg);
   border: 1px dashed var(--border-soft);
@@ -180,8 +161,6 @@ code {
   box-shadow: none;
 }
 
-/* Explicitly prevent interaction feedback */
-/* Explicitly prevent interaction feedback */
 .btn-locked:hover,
 .btn-locked:active,
 .btn-locked:focus,
@@ -281,4 +260,387 @@ code {
 .form-control,
 .input-group-text {
   border-radius: 8px;
+}
+
+/* =========================
+   Custom Tables
+   ========================= */
+.custom-table {
+  border-radius: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  background-color: var(--paper-light);
+}
+
+/* ---- Table header ---- */
+.custom-table thead th {
+  background-color: var(--paper-alt);
+  color: var(--ink-dark);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-soft);
+  border-color: var(--border-soft);
+}
+
+/* ---- Row headers (tbody th) ---- */
+.custom-table tbody th {
+  background-color: var(--paper-alt);
+  color: var(--ink-dark);
+  font-weight: 500;
+
+  border-right: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* ---- Table body cells ---- */
+.custom-table tbody td {
+  background-color: var(--paper-light);
+  color: var(--ink-dark);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* Remove last row border */
+.custom-table tbody tr:last-child th,
+.custom-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---- Table container ---- */
+.table-container {
+  overflow-x: auto;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  margin-top: 25px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+  background-color: var(--paper-light);
+}
+
+/* Big screens spacing */
+.table {
+  margin-bottom: 0;
+}
+
+/* Small screens */
+@media (max-width: 60em) {
+  .table-container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* =========================
+   Accordion
+   ========================= */
+.accordion {
+  margin-bottom: 20px;
+}
+
+/* Remove Bootstrap focus ring */
+.accordion-button:focus {
+  box-shadow: none !important;
+}
+
+/* Accordion item = paper card */
+.accordion-item {
+  background-color: var(--paper-alt);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+/* Header */
+.accordion-button {
+  background-color: var(--paper-alt);
+  color: var(--ink-dark);
+  font-weight: 500;
+  padding: 0.9rem 1.25rem;
+  transition:
+    background-color 120ms ease,
+    color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+/* Hover = lift */
+.accordion-button:hover {
+  background-color: var(--paper-light);
+}
+
+/* Expanded header */
+.accordion-button:not(.collapsed) {
+  background-color: var(--paper-light);
+  color: var(--ink-dark);
+  box-shadow: inset 4px 0 0 var(--accent-orange);
+}
+
+/* Body */
+.accordion-body {
+  background-color: var(--paper-light);
+  color: var(--ink-dark);
+  border-top: 1px solid var(--border-soft);
+  padding: 1rem 1.25rem;
+}
+
+/* Optional: subtle depth */
+.accordion-item {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* =========================
+   Snippet Cards (Code)
+   ========================= */
+
+.snippet-card {
+  background-color: var(--paper-alt);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  margin: 25px 30px 30px 30px;
+  overflow: hidden;
+}
+
+/* Small screens */
+@media (max-width: 60em) {
+  .snippet-card {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.snippet-card-head {
+  text-align: right;
+  padding: 5px 10px 5px 10px;
+  background-color: var(--paper-light);
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.snippet-card-body {
+  background-color: #2A2A30;
+  color: #EDEDED;
+  font-family: 'Menlo', monospace;
+  font-size: 12pt;
+  padding: 0.75rem 1rem;
+  white-space: pre;
+  overflow-x: auto;
+  border-left: 4px solid transparent;
+  /* for active accent */
+  transition: border-color 120ms ease;
+}
+
+/* Optional: highlight active snippet with accent (like accordion) */
+.snippet-card.active .snippet-card-body {
+  border-left-color: var(--accent-orange);
+}
+
+/* Snippet buttons */
+.snippet-btn {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.snippet-btn:focus {
+  outline: none;
+}
+
+/* Language label */
+.lang {
+  font-family: 'Menlo', monospace;
+  font-size: 9pt;
+  color: var(--ink-light);
+}
+
+/* =========================
+   LaTeX Snippets
+   ========================= */
+
+.tex-card {
+  background-color: var(--paper-alt);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  margin: 25px 30px 30px 30px;
+  overflow: hidden;
+}
+
+/* Small screens */
+@media (max-width: 60em) {
+  .tex-card {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.tex-card-head {
+  text-align: left;
+  padding: 5px 10px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-soft);
+  background-color: var(--paper-light);
+}
+
+.tex-card-body {
+  display: flex;
+  align-items: flex-start;
+  background-color: #2A2A30;
+  color: #EDEDED;
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
+  overflow-x: auto;
+  border-left: 4px solid transparent;
+  transition: border-color 120ms ease;
+}
+
+/* Highlight LaTeX snippet on focus / hover */
+.tex-card.active .tex-card-body {
+  border-left-color: var(--accent-orange);
+}
+
+/* Hide rendered HTML by KaTeX if needed */
+.katex-html {
+  display: none;
+}
+
+math {
+  font-family: 'Latin Modern Math', serif;
+  font-size: 14pt;
+}
+
+/* =========================
+   Navbar
+   ========================= */
+
+.navbar {
+  background-color: var(--nav-bg);
+}
+
+/* Brand */
+.navbar-brand {
+  color: var(--nav-text);
+  font-weight: 600;
+}
+
+.navbar-brand:hover {
+  color: var(--accent-orange);
+}
+
+/* -------------------------
+   Nav links
+   ------------------------- */
+
+.navbar-nav .nav-link {
+  color: var(--paper-alt);
+  /* as requested */
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--accent-orange);
+  text-decoration: none;
+}
+
+/* Active link */
+.navbar-nav .nav-link.active {
+  color: var(--accent-orange);
+}
+
+/* -------------------------
+   NavDropdown toggle
+   ------------------------- */
+
+.navbar-nav .dropdown-toggle {
+  color: var(--paper-alt);
+  font-weight: 500;
+}
+
+.navbar-nav .dropdown-toggle:hover,
+.navbar-nav .dropdown-toggle:focus {
+  color: var(--accent-orange);
+  text-decoration: none;
+}
+
+/* When dropdown is open */
+.navbar-nav .show>.nav-link {
+  color: var(--accent-orange);
+}
+
+/* -------------------------
+   Dropdown menu
+   ------------------------- */
+
+.dropdown-menu {
+  background-color: var(--paper-light);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 0.4rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Dropdown items */
+.dropdown-item {
+  color: var(--ink-dark);
+  border-radius: 6px;
+  padding: 0.45rem 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Hover / focus — ORANGE, softened */
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: rgba(197, 95, 58, 0.18);
+  /* softened orange */
+  color: var(--ink-dark);
+  text-decoration: none;
+  /* explicitly prevent underline */
+}
+
+/* Active dropdown item */
+.dropdown-item.active {
+  background-color: rgba(197, 95, 58, 0.28);
+  color: var(--ink-dark);
+  text-decoration: none;
+}
+
+/* Divider */
+.dropdown-divider {
+  border-top: 1px solid var(--border-soft);
+  margin: 0.35rem 0;
+}
+
+/* =========================
+   Navbar Toggler (Hamburger)
+   ========================= */
+
+/* Make the hamburger lines visible on dark navbar */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.4);
+  /* subtle light border */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Optional: hover/focus effect for better visibility */
+.navbar-toggler:hover,
+.navbar-toggler:focus {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* =========================
+   Images
+   ========================= */
+.paper-image {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 1px solid #ddd;
 }

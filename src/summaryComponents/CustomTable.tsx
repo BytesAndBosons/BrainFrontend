@@ -1,5 +1,4 @@
 import { Table } from "react-bootstrap";
-import './styles/CustomTable.css';
 
 export const CustomTable: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 

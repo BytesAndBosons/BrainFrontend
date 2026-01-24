@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { CodeStyler, Styler } from "./scripts/CodeStyler";
-import './styles/CodeSnippet.css';
 
 export const CodeSnippet: React.FC<{ lang: string | null, title: string | null, children: React.ReactNode }> = ({ lang, title, children }) => {
 

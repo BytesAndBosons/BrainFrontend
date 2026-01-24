@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { parse, HtmlGenerator } from 'latex.js';
-import './styles/TexSnippet.css';
 
 interface LatexCardProps {
   title?: string;

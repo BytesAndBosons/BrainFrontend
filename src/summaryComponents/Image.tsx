@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { NavigationContext } from "../contextProviders/NavigationContextProvider";
-import './styles/Image.css';
 
 
 export const Image: React.FC<{ src: string, width: string, caption: string | null }> = ({ src, width, caption }) => {

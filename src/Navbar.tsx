@@ -128,14 +128,14 @@ export const NavBar: React.FC = () => {
             {isLoggedIn ? (
               <Button
                 onClick={(_) => logout(setLoggedIn, setNames)}
-                className="btn-sakura"
+                className="btn-primary"
               >
                 Logout
               </Button>
             ) : (
               <Button
                   onClick={(_) => setNavigation("login")}
-                  className="btn-sakura"
+                  className="btn-primary"
               >
                 Login
               </Button>
