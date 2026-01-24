@@ -4,8 +4,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Button } from "react-bootstrap";
-// CSS
-import "./styles/Navbar.css";
 // Assets
 import brainLogo from "./assets/logo_w.png";
 // Helpers

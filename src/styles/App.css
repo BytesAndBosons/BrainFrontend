@@ -1,41 +1,19 @@
 /* ================================================= */
-/* Change spacing before h3, h4                      */
+/* Amber Scroll Theme CSS                            */
 /* ================================================= */
-h3 {
-  margin-top: 1em;
-  margin-bottom: 0.4em;
-}
-  
-.accordion-body>h3:first-child {
-  margin-top: 0;
-}
 
-h4 {
-  margin-top: 1em;
-}
-  
-.accordion-body>h4:first-child {
-  margin-top: 0;
-}
-
-ul ul {
-  list-style-type: "– ";
-}
-
-/* =============================
-    Fonts
-   ============================= */
+/* ================================================= */
+/* Fonts                                             */
+/* ================================================= */
 @font-face {
   font-family: 'Latin Modern Math';
   src: url('../assets/fonts/latinmodern-math.woff2') format('woff2'),
     url('../assets/fonts/latinmodern-math.woff') format('woff');
 }
 
-
-/* =============================
-    Theme Colors (Amber Scroll)
-   ============================= */
-
+/* ================================================= */
+/* Root Variables                                   */
+/* ================================================= */
 :root {
   /* Accent */
   --accent-orange: rgb(197, 95, 58);
@@ -51,25 +29,25 @@ ul ul {
   /* Borders */
   --border-soft: #D6CFC7;
 
-  /* Disabled */
+  /* Disabled / muted */
   --muted-text: #9A9A9A;
   --disabled-bg: #EEE9E2;
 
   /* Navbar */
-  --nav-bg: var(--ink-dark);
+  --nav-bg: #2A2A30;
   --nav-text: #FFFFFF;
 }
 
-/* =============================
-    Main Settings
-   ============================= */
-/* ---- Page background ---- */
+/* ================================================= */
+/* Global Settings                                  */
+/* ================================================= */
 body {
   background-color: var(--paper-alt);
   color: var(--ink-dark);
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
 }
 
-/* ---- Links ---- */
 a {
   color: var(--accent-orange);
   text-decoration: none;
@@ -82,60 +60,57 @@ a:hover {
   text-underline-offset: 3px;
 }
 
-
-/* ---- Code blocks ---- */
-pre {
-  background-color: #2A2A30;
-  color: #EDEDED;
-  border-radius: 10px;
+/* ================================================= */
+/* Headings & Lists                                 */
+/* ================================================= */
+h3 {
+  margin: 1em 0 0.4em 0;
 }
 
-/* Inline code */
-code {
-  background-color: rgba(197, 95, 58, 0.15);
-  color: rgb(155, 70, 40);
-  padding: 0.15em 0.35em;
-  border-radius: 6px;
-  font-size: 0.9em;
+h4 {
+  margin-top: 1em;
 }
 
-/* ---- Buttons ---- */
+.accordion-body>h3:first-child,
+.accordion-body>h4:first-child {
+  margin-top: 0;
+}
+
+ul ul {
+  list-style-type: "– ";
+}
+
+/* ================================================= */
+/* Buttons                                          */
+/* ================================================= */
 .btn-primary {
   background-color: var(--accent-orange);
   border-color: var(--accent-orange);
   color: #fff;
   border-radius: 999px;
-  font-weight: 600;
-  transition:
-    background-color 120ms ease,
+  /*font-weight: 600;*/
+  transition: background-color 120ms ease,
     border-color 120ms ease,
     box-shadow 120ms ease,
     transform 80ms ease;
 }
 
-/* Hover: subtle lift */
 .btn-primary:hover {
   background-color: rgb(180, 85, 50);
   border-color: rgb(180, 85, 50);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
 
-/* Active: pressed */
 .btn-primary:active {
   background-color: rgb(155, 70, 40) !important;
   border-color: rgb(155, 70, 40) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.25),
-    0 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
   transform: translateY(2px);
 }
 
-/* Focus-visible: clean, not glowy */
 .btn-primary:focus-visible {
   outline: none;
-  box-shadow:
-    0 0 0 2px var(--paper-light),
-    0 0 0 4px rgba(197, 95, 58, 0.6);
+  box-shadow: 0 0 0 2px var(--paper-light), 0 0 0 4px rgba(197, 95, 58, 0.6);
 }
 
 .btn-secondary {
@@ -143,9 +118,7 @@ code {
   border: 1px solid var(--ink-light);
   color: var(--ink-light);
   border-radius: 999px;
-  transition:
-    background-color 120ms ease,
-    color 120ms ease;
+  transition: background-color 120ms ease, color 120ms ease;
 }
 
 .btn-secondary:hover {
@@ -172,59 +145,16 @@ code {
   transform: none !important;
 }
 
-/* ---- Alerts ---- */
-.alert-dark {
-  background-color: var(--paper-alt);
-  border: 1px solid var(--border-soft);
-  color: var(--ink-dark);
-  border-radius: 8px;
-}
-
-.alert-danger {
-  background-color: #F6E4E6;
-  color: #7A2E3A;
-  border: 1px solid #E2B7BE;
-  border-radius: 8px;
-}
-
-/* ---- Input group ---- */
-.input-group-text {
-  background-color: var(--paper-alt);
-  border: 1px solid var(--border-soft);
-  color: var(--ink-muted);
-  font-size: 1rem;
-}
-
-/* Text inputs */
-.form-control {
-  background-color: var(--paper-light);
-  border: 1px solid var(--border-soft);
-  color: var(--ink-dark);
-}
-
-.form-control::placeholder {
-  color: #9A8F8A;
-}
-
-/* Focus state */
-.form-control:focus {
-  border-color: var(--accent-orange);
-  box-shadow: 0 0 0 0.15rem rgba(184, 154, 120, 0.35);
-}
-
-/* =========================
-   Login
-   ========================= */
-
-/* Info alert */
+/* ================================================= */
+/* Alerts                                           */
+/* ================================================= */
 .alert-dark {
   background-color: rgba(197, 95, 58, 0.18);
-  border: 1px rgba(197, 95, 58, 0.18);
+  border: 1px solid rgba(197, 95, 58, 0.18);
   color: var(--ink-dark);
   border-radius: 8px;
 }
 
-/* Error alert */
 .alert-danger {
   background-color: #F6E1DA;
   border: 1px solid rgba(197, 95, 58, 0.35);
@@ -232,234 +162,83 @@ code {
   border-radius: 8px;
 }
 
+/* ================================================= */
+/* Forms & Inputs                                   */
+/* ================================================= */
+.input-group-text {
+  background-color: var(--paper-alt);
+  border: 1px solid var(--border-soft);
+  color: var(--muted-text);
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
 .form-control {
   background-color: var(--paper-light);
   border: 1px solid var(--border-soft);
   color: var(--ink-dark);
   font-size: 1rem;
+  border-radius: 8px;
 }
 
 .form-control::placeholder {
   color: var(--muted-text);
 }
 
-/* Focus: orange, but restrained */
 .form-control:focus {
   border-color: var(--accent-orange);
   box-shadow: 0 0 0 0.15rem rgba(197, 95, 58, 0.3);
 }
 
-.login-container form {
-  margin-top: 1.5rem;
-}
-
-.login-container .btn-primary {
-  margin-top: 0.5rem;
-}
-
-.form-control,
-.input-group-text {
-  border-radius: 8px;
-}
-
-/* =========================
-   Custom Tables
-   ========================= */
-.custom-table {
-  border-radius: 10px;
-  border-collapse: separate;
-  border-spacing: 0;
-  overflow: hidden;
-  border: 1px solid var(--border-soft);
-  background-color: var(--paper-light);
-}
-
-/* ---- Table header ---- */
-.custom-table thead th {
-  background-color: var(--paper-alt);
-  color: var(--ink-dark);
-  font-weight: 600;
-  border-bottom: 1px solid var(--border-soft);
-  border-color: var(--border-soft);
-}
-
-/* ---- Row headers (tbody th) ---- */
-.custom-table tbody th {
-  background-color: var(--paper-alt);
-  color: var(--ink-dark);
-  font-weight: 500;
-
-  border-right: 1px solid var(--border-soft);
-  border-bottom: 1px solid var(--border-soft);
-}
-
-/* ---- Table body cells ---- */
-.custom-table tbody td {
-  background-color: var(--paper-light);
-  color: var(--ink-dark);
-  border-bottom: 1px solid var(--border-soft);
-}
-
-/* Remove last row border */
-.custom-table tbody tr:last-child th,
-.custom-table tbody tr:last-child td {
-  border-bottom: 0;
-}
-
-/* ---- Table container ---- */
-.table-container {
-  overflow-x: auto;
-  border: 1px solid var(--border-soft);
-  border-radius: 10px;
-  margin-top: 25px;
-  margin-bottom: 30px;
-  margin-left: 30px;
-  margin-right: 30px;
-  background-color: var(--paper-light);
-}
-
-/* Big screens spacing */
-.table {
-  margin-bottom: 0;
-}
-
-/* Small screens */
-@media (max-width: 60em) {
-  .table-container {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-/* =========================
-   Accordion
-   ========================= */
+/* ================================================= */
+/* Accordion                                        */
+/* ================================================= */
 .accordion {
   margin-bottom: 20px;
 }
 
-/* Remove Bootstrap focus ring */
 .accordion-button:focus {
   box-shadow: none !important;
 }
 
-/* Accordion item = paper card */
 .accordion-item {
   background-color: var(--paper-alt);
   border: 1px solid var(--border-soft);
   border-radius: 10px;
   margin-bottom: 12px;
   overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
-/* Header */
 .accordion-button {
   background-color: var(--paper-alt);
   color: var(--ink-dark);
   font-weight: 500;
   padding: 0.9rem 1.25rem;
-  transition:
-    background-color 120ms ease,
-    color 120ms ease,
-    box-shadow 120ms ease;
+  transition: background-color 120ms ease, color 120ms ease, box-shadow 120ms ease;
 }
 
-/* Hover = lift */
 .accordion-button:hover {
   background-color: var(--paper-light);
 }
 
-/* Expanded header */
 .accordion-button:not(.collapsed) {
   background-color: var(--paper-light);
   color: var(--ink-dark);
-  box-shadow: inset 4px 0 0 var(--accent-orange);
+  border-bottom: none;
+  box-shadow: none /* inset 4px 0 0 var(--accent-orange); */
 }
 
-/* Body */
 .accordion-body {
   background-color: var(--paper-light);
   color: var(--ink-dark);
-  border-top: 1px solid var(--border-soft);
   padding: 1rem 1.25rem;
 }
 
-/* Optional: subtle depth */
-.accordion-item {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-}
-
-/* =========================
-   Snippet Cards (Code)
-   ========================= */
-
-.snippet-card {
-  background-color: var(--paper-alt);
-  border: 1px solid var(--border-soft);
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  margin: 25px 30px 30px 30px;
-  overflow: hidden;
-}
-
-/* Small screens */
-@media (max-width: 60em) {
-  .snippet-card {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-.snippet-card-head {
-  text-align: right;
-  padding: 5px 10px 5px 10px;
-  background-color: var(--paper-light);
-  font-weight: 500;
-  font-size: 0.9rem;
-  border-bottom: 1px solid var(--border-soft);
-}
-
-.snippet-card-body {
-  background-color: #2A2A30;
-  color: #EDEDED;
-  font-family: 'Menlo', monospace;
-  font-size: 12pt;
-  padding: 0.75rem 1rem;
-  white-space: pre;
-  overflow-x: auto;
-  border-left: 4px solid transparent;
-  /* for active accent */
-  transition: border-color 120ms ease;
-}
-
-/* Optional: highlight active snippet with accent (like accordion) */
-.snippet-card.active .snippet-card-body {
-  border-left-color: var(--accent-orange);
-}
-
-/* Snippet buttons */
-.snippet-btn {
-  border: none;
-  outline: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-.snippet-btn:focus {
-  outline: none;
-}
-
-/* Language label */
-.lang {
-  font-family: 'Menlo', monospace;
-  font-size: 9pt;
-  color: var(--ink-light);
-}
-
-/* =========================
-   LaTeX Snippets
-   ========================= */
-
+/* ================================================= */
+/* Code Snippets                                   */
+/* ================================================= */
+.snippet-card,
 .tex-card {
   background-color: var(--paper-alt);
   border: 1px solid var(--border-soft);
@@ -469,41 +248,60 @@ code {
   overflow: hidden;
 }
 
-/* Small screens */
 @media (max-width: 60em) {
+
+  .snippet-card,
   .tex-card {
     margin-left: 0;
     margin-right: 0;
   }
 }
 
+.snippet-card-head,
 .tex-card-head {
-  text-align: left;
-  padding: 5px 10px;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  padding: 5px 10px;
   border-bottom: 1px solid var(--border-soft);
   background-color: var(--paper-light);
+  text-align: right;
 }
 
+.snippet-card-body,
 .tex-card-body {
-  display: flex;
-  align-items: flex-start;
   background-color: #2A2A30;
   color: #EDEDED;
+  font-family: 'Menlo', monospace;
+  font-size: 12pt;
   padding: 0.75rem 1rem;
-  white-space: nowrap;
+  white-space: pre;
   overflow-x: auto;
   border-left: 4px solid transparent;
   transition: border-color 120ms ease;
 }
 
-/* Highlight LaTeX snippet on focus / hover */
+.snippet-card.active .snippet-card-body,
 .tex-card.active .tex-card-body {
   border-left-color: var(--accent-orange);
 }
 
-/* Hide rendered HTML by KaTeX if needed */
+/* Inline code */
+code {
+  background-color: rgba(197, 95, 58, 0.15);
+  font-family: 'Menlo', monospace;
+  color: rgb(155, 70, 40);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+.lang {
+  font-size: 9pt;
+  font-family: 'Menlo', monospace;
+  color: var(--ink-light);
+}
+
+/* LaTeX */
 .katex-html {
   display: none;
 }
@@ -513,15 +311,13 @@ math {
   font-size: 14pt;
 }
 
-/* =========================
-   Navbar
-   ========================= */
-
+/* ================================================= */
+/* Navbar                                           */
+/* ================================================= */
 .navbar {
   background-color: var(--nav-bg);
 }
 
-/* Brand */
 .navbar-brand {
   color: var(--nav-text);
   font-weight: 600;
@@ -531,51 +327,25 @@ math {
   color: var(--accent-orange);
 }
 
-/* -------------------------
-   Nav links
-   ------------------------- */
-
-.navbar-nav .nav-link {
-  color: var(--paper-alt);
-  /* as requested */
-  font-weight: 500;
-}
-
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link:focus {
-  color: var(--accent-orange);
-  text-decoration: none;
-}
-
-/* Active link */
-.navbar-nav .nav-link.active {
-  color: var(--accent-orange);
-}
-
-/* -------------------------
-   NavDropdown toggle
-   ------------------------- */
-
+.navbar-nav .nav-link,
 .navbar-nav .dropdown-toggle {
   color: var(--paper-alt);
   font-weight: 500;
 }
 
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
 .navbar-nav .dropdown-toggle:hover,
 .navbar-nav .dropdown-toggle:focus {
   color: var(--accent-orange);
-  text-decoration: none;
 }
 
-/* When dropdown is open */
+.navbar-nav .nav-link.active,
 .navbar-nav .show>.nav-link {
   color: var(--accent-orange);
 }
 
-/* -------------------------
-   Dropdown menu
-   ------------------------- */
-
+/* Dropdown menu */
 .dropdown-menu {
   background-color: var(--paper-light);
   border: 1px solid var(--border-soft);
@@ -584,63 +354,120 @@ math {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* Dropdown items */
 .dropdown-item {
   color: var(--ink-dark);
+  font-weight: 500;
   border-radius: 6px;
   padding: 0.45rem 0.75rem;
-  font-weight: 500;
-  text-decoration: none;
 }
 
-/* Hover / focus — ORANGE, softened */
 .dropdown-item:hover,
 .dropdown-item:focus {
   background-color: rgba(197, 95, 58, 0.18);
-  /* softened orange */
   color: var(--ink-dark);
   text-decoration: none;
-  /* explicitly prevent underline */
 }
 
-/* Active dropdown item */
 .dropdown-item.active {
   background-color: rgba(197, 95, 58, 0.28);
   color: var(--ink-dark);
-  text-decoration: none;
 }
 
-/* Divider */
 .dropdown-divider {
   border-top: 1px solid var(--border-soft);
   margin: 0.35rem 0;
 }
 
-/* =========================
-   Navbar Toggler (Hamburger)
-   ========================= */
-
-/* Make the hamburger lines visible on dark navbar */
+/* Navbar toggler */
 .navbar-toggler {
+  padding: 0.25rem 0.45rem;
+  /* smaller click area */
   border-color: rgba(255, 255, 255, 0.4);
-  /* subtle light border */
 }
 
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  width: 1.1em;
+  height: 1.1em;
+  background-size: 1.1em 1.1em;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M6 9h18M6 15h18M6 21h18'/%3E%3C/svg%3E");
 }
 
-/* Optional: hover/focus effect for better visibility */
 .navbar-toggler:hover,
 .navbar-toggler:focus {
   border-color: rgba(255, 255, 255, 0.7);
 }
 
-/* =========================
-   Images
-   ========================= */
+/* ================================================= */
+/* Images                                           */
+/* ================================================= */
+/* ================================================= */
+/* Images                                           */
+/* ================================================= */
 .paper-image {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border: 1px solid #ddd;
+
+  /* Black and white effect */
+  filter: grayscale(100%) brightness(1) contrast(1);
+  transition: filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover: remain black and white, adjust brightness/contrast */
+.paper-image:hover {
+  filter: grayscale(100%) brightness(0.9) contrast(1.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ================================================= */
+/* Tables                                           */
+/* ================================================= */
+.custom-table {
+  border-radius: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  background-color: var(--paper-light);
+}
+
+.custom-table thead th,
+.custom-table tbody th {
+  background-color: var(--paper-alt);
+  color: var(--ink-dark);
+}
+
+.custom-table tbody td {
+  background-color: var(--paper-light);
+  color: var(--ink-dark);
+}
+
+.custom-table tbody tr:last-child th,
+.custom-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table-container {
+  overflow-x: auto;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding-bottom: 0;
+  margin: 25px 30px 30px 30px;
+  background-color: var(--paper-light);
+}
+
+@media (max-width: 60em) {
+  .table-container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.custom-table {
+  margin-bottom: 0;
+}
+
+.custom-table tbody tr:last-child th,
+.custom-table tbody tr:last-child td {
+  border-bottom: 0;
 }
