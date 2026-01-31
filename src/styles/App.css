@@ -264,7 +264,7 @@ ul ul {
   padding: 5px 10px;
   border-bottom: 1px solid var(--border-soft);
   background-color: var(--paper-light);
-  text-align: right;
+  text-align: left;
 }
 
 .snippet-card-body,
