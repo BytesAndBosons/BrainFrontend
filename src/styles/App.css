@@ -65,10 +65,16 @@ a:hover {
 /* ================================================= */
 h3 {
   margin: 1em 0 0.4em 0;
+  color: var(--accent-orange);
 }
 
 h4 {
   margin-top: 1em;
+  color: var(--accent-orange);
+}
+
+h5 {
+  color: rgb(155, 70, 40);
 }
 
 .accordion-body>h3:first-child,
