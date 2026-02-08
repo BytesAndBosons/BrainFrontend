@@ -277,13 +277,73 @@ ul ul {
 .tex-card-body {
   background-color: #2A2A30;
   color: #EDEDED;
-  font-family: 'Menlo', monospace;
+  font-family: 'Arial', sans-serif; /* Changed from monospace to normal text font */
   font-size: 12pt;
   padding: 0.75rem 1rem;
-  white-space: pre;
-  overflow-x: auto;
+  white-space: pre-wrap; /* Changed from pre to pre-wrap for better wrapping */
+  word-break: break-word; /* Added to break long words */
+  overflow-x: hidden; /* Changed from auto to hidden */
   border-left: 4px solid transparent;
   transition: border-color 120ms ease;
+}
+
+/* Removed custom list styling for tex-card-body to use default browser spacing */
+
+.tex-card.active .tex-card-body {
+  border-left-color: var(--accent-orange);
+}
+
+/* New SummaryBox styling */
+.summary-box {
+  background-color: var(--paper-alt);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  margin: 25px 30px 30px 30px;
+  overflow: hidden;
+}
+
+@media (max-width: 60em) {
+  .summary-box {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.summary-box-head {
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--border-soft);
+  background-color: var(--paper-light);
+  text-align: left;
+}
+
+.summary-box-body {
+  background-color: #2A2A30;
+  color: #EDEDED;
+  font-family: 'Arial', sans-serif;
+  font-size: 12pt;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid transparent;
+  transition: border-color 120ms ease;
+  line-height: 1.6; /* Match body line-height */
+}
+
+/* Use default browser list styling for normal spacing */
+.summary-box-body ul,
+.summary-box-body ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.summary-box-body li {
+  margin: 0.1rem 0; /* Minimal spacing between list items */
+  line-height: 1.6; /* Match body line-height */
+}
+
+.summary-box.active .summary-box-body {
+  border-left-color: var(--accent-orange);
 }
 
 .snippet-card.active .snippet-card-body,
