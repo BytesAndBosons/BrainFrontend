@@ -30,7 +30,7 @@ export class CodeStyler implements Styler {
                 this.styler = new GenericCodeStyler(["//"], ["if", "return", "class", "else", "for", "public", "protected", "private", "const", "virtual", "void", "bool"], ["\"", "\'"], charsKeys, colors);
                 break;
             case "bash":
-                this.styler = new GenericCodeStyler(["#"], ["openssl", "minikube", "install", "podman", "kubeadm", "kubelet", "update", "containerd", "helm", "kubectl", "brew", "npm", "tsc", "terraform", "ansible", "config", "dump", "ping", "docker", "build", "push", "run", "docker-compose", "up", "down"], ["\"", "EOF"], charsKeys, colors);
+                this.styler = new GenericCodeStyler(["#"], ["journalctl", "openssl", "minikube", "install", "podman", "kubeadm", "kubelet", "update", "containerd", "helm", "kubectl", "brew", "npm", "tsc", "terraform", "ansible", "config", "dump", "ping", "docker", "build", "push", "run", "docker-compose", "up", "down"], ["\"", "EOF"], charsKeys, colors);
                 break;
             case "go":
                 this.styler = new GenericCodeStyler(["//"], ["func", "package", "import", "Println", "int", "var", "bool", "string", "int", "int8", "int16", "int32", "int64", "uint", "uint8", "uint16", "uint32", "uint64", "float32", "float64", "complex64", "complex128", "for", "range", "map", "make", "struct", "type", "return", "append", "delete"], ["\""], charsKeys, colors);
@@ -58,6 +58,9 @@ export class CodeStyler implements Styler {
                 break;
             case "dockerfile":
                 this.styler = new GenericCodeStyler(["#"], ["FROM", "LABEL", "RUN", "COPY", "WORKDIR", "ENTRYPOINT"], ["\"", "\'"], charsKeys, colors);
+                break;
+            case "shell":
+                this.styler = new GenericCodeStyler(["#"], ["journalctl", "openssl", "minikube", "install", "podman", "kubeadm", "kubelet", "update", "containerd", "helm", "kubectl", "brew", "npm", "tsc", "terraform", "ansible", "config", "dump", "ping", "docker", "build", "push", "run", "docker-compose", "up", "down"], ["\"", "EOF"], charsKeys, colors);
                 break;
             case "text":
                 this.styler = new GenericCodeStyler(["#"], [], [], charsKeys, colors);
