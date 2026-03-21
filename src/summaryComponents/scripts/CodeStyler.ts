@@ -60,7 +60,7 @@ export class CodeStyler implements Styler {
                 this.styler = new GenericCodeStyler(["#"], ["FROM", "LABEL", "RUN", "COPY", "WORKDIR", "ENTRYPOINT"], ["\"", "\'"], charsKeys, colors);
                 break;
             case "shell":
-                this.styler = new GenericCodeStyler(["#"], ["journalctl", "openssl", "minikube", "install", "podman", "kubeadm", "kubelet", "update", "containerd", "helm", "kubectl", "brew", "npm", "tsc", "terraform", "ansible", "config", "dump", "ping", "docker", "build", "push", "run", "docker-compose", "up", "down"], ["\"", "EOF"], charsKeys, colors);
+                this.styler = new GenericCodeStyler(["#"], ["lsof", "cat", "echo", "strace", "ltrace", "top", "ps", "renice", "uptime", "free", "cd", "getconf", "vmstat", "iostat", "iotop", "pidstat", "time", "find", "blkid", "umount", "mount", "parted", "fdisk", "ls", "cat", "mkfs", "journalctl", "openssl", "minikube", "install", "podman", "kubeadm", "kubelet", "update", "containerd", "helm", "kubectl", "brew", "npm", "tsc", "terraform", "ansible", "config", "dump", "ping", "docker", "build", "push", "run", "docker-compose", "up", "down"], ["\"", "EOF"], charsKeys, colors);
                 break;
             case "text":
                 this.styler = new GenericCodeStyler(["#"], [], [], charsKeys, colors);
