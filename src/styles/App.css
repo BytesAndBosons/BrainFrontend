@@ -320,7 +320,7 @@ ul ul {
 }
 
 .summary-box-body {
-  background-color: #2A2A30;
+  background-color: #747474;
   color: #EDEDED;
   font-family: 'Arial', sans-serif;
   font-size: 12pt;
@@ -328,6 +328,13 @@ ul ul {
   border-left: 4px solid transparent;
   transition: border-color 120ms ease;
   line-height: 1.6; /* Match body line-height */
+}
+
+.summary-box-body figcaption {
+  color: #EDEDED;
+}
+.summary-box-body .figure-caption {
+  color: #EDEDED;
 }
 
 /* Use default browser list styling for normal spacing */
