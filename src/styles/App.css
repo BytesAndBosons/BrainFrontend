@@ -315,19 +315,26 @@ ul ul {
   font-size: 1rem;
   padding: 5px 10px;
   border-bottom: 1px solid var(--border-soft);
-  background-color: var(--paper-light);
+  background-color: var(--paper-alt);
   text-align: left;
 }
 
 .summary-box-body {
-  background-color: #2A2A30;
-  color: #EDEDED;
+  background-color: var(--paper-alt);
+  color: #000000;
   font-family: 'Arial', sans-serif;
   font-size: 12pt;
   padding: 0.75rem 1rem;
   border-left: 4px solid transparent;
   transition: border-color 120ms ease;
   line-height: 1.6; /* Match body line-height */
+}
+
+.summary-box-body figcaption {
+  color: #EDEDED;
+}
+.summary-box-body .figure-caption {
+  color: #EDEDED;
 }
 
 /* Use default browser list styling for normal spacing */
