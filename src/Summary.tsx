@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import JsxParser from 'react-jsx-parser';
 import { NavigationContext } from "./contextProviders/NavigationContextProvider";
+import { PdfExportContext } from "./contextProviders/PdfExportContext";
 import { Image } from "./summaryComponents/Image";
 import { CodeSnippet } from "./summaryComponents/CodeSnippet";
-import { Alert, Container } from "react-bootstrap";
+import { Alert, Button, Container } from "react-bootstrap";
 import { AccordionSection } from "./summaryComponents/AccordionSection";
 import { ColorButton } from "./ColorButton";
 import { CustomTable } from "./summaryComponents/CustomTable";
@@ -20,6 +21,8 @@ export const Summary: React.FC = () => {
   const { navigation, setNavigation } = useContext(NavigationContext);
   const [error, setError] = useState<string | null>(null);
   const [Component, setComponent] = useState<React.FC | null>(null);
+  const [expandAll, setExpandAll] = useState(false);
+  const [preparingPrint, setPreparingPrint] = useState(false);
 
   // Get the summary from the backend
   const loadSummary = async () => {
@@ -79,10 +82,43 @@ export const Summary: React.FC = () => {
     loadSummary();
   }, [navigation]);
 
+  const handlePrint = async () => {
+    if (preparingPrint) return;
+
+    setPreparingPrint(true);
+
+    // Expand every accordion and wait for the collapse animations to finish
+    setExpandAll(true);
+    await new Promise((resolve) => setTimeout(resolve, 400));
+
+    // Suggests a nicer default filename in the browser's print/save-as-PDF dialog
+    const previousTitle = document.title;
+    document.title = navigation;
+
+    const restore = () => {
+      document.title = previousTitle;
+      setExpandAll(false);
+      setPreparingPrint(false);
+      window.removeEventListener("afterprint", restore);
+    };
+    window.addEventListener("afterprint", restore);
+
+    window.print();
+  };
+
   return (
     <Container className="d-flex flex-column min-vh-100 my-5">
       {error && <Alert variant="danger">{error}</Alert>}
-      {Component && <Component />}
+      {Component && (
+        <div className="d-flex justify-content-end mb-3 d-print-none">
+          <Button className="btn-primary btn-pdf-download" onClick={handlePrint} disabled={preparingPrint}>
+            {preparingPrint ? "Preparing…" : "Download PDF"}
+          </Button>
+        </div>
+      )}
+      <PdfExportContext.Provider value={{ expandAll }}>
+        {Component && <Component />}
+      </PdfExportContext.Provider>
     </Container>
   );
 };

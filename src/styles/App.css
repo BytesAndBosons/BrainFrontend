@@ -119,6 +119,15 @@ ul ul {
   box-shadow: 0 0 0 2px var(--paper-light), 0 0 0 4px rgba(197, 95, 58, 0.6);
 }
 
+.btn-pdf-download:active,
+.btn-pdf-download:disabled,
+.btn-pdf-download.disabled {
+  background-color: rgb(217, 128, 94) !important;
+  border-color: rgb(217, 128, 94) !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
 .btn-secondary {
   background-color: transparent;
   border: 1px solid var(--ink-light);
@@ -543,4 +552,60 @@ math {
 .custom-table tbody tr:last-child th,
 .custom-table tbody tr:last-child td {
   border-bottom: 0;
+}
+
+/* ================================================= */
+/* Print (Download PDF)                             */
+/* ================================================= */
+@page {
+  /* Zero page margin lets the background paint edge-to-edge; the content
+     itself gets inset via the .container padding below instead. */
+  margin: 0.5cm;
+  background-color: var(--paper-alt);
+}
+
+@media print {
+
+  html,
+  body {
+    background-color: #fff;
+  }
+
+  /* Browsers drop background colors/images by default when printing */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* The print engine emulates a narrow viewport, so Bootstrap's responsive
+     container breakpoints clamp it to a small max-width (e.g. 540px) well
+     below the actual printable page width. Let it fill the page instead. */
+  .container {
+    min-height: auto !important;
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0.5cm !important;
+  }
+
+  /* Guard against printing mid-transition, in case the accordion's
+     opening animation hasn't finished by the time the dialog opens */
+  .accordion-collapse {
+    display: block !important;
+    height: auto !important;
+    visibility: visible !important;
+  }
+
+  /* Each AccordionSection renders its own <Accordion> wrapper, so starting
+     a new page there (rather than on .accordion-item) puts every section
+     on its own page. Skip it for a section that's already first on the
+     page, to avoid a blank leading page. */
+  .accordion {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .accordion:first-child {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
 }

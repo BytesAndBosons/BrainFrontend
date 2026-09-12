@@ -81,7 +81,7 @@ export const NavBar: React.FC = () => {
   });
 
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" className="d-print-none">
       <Container>
         <Navbar.Brand href="">
           <img
