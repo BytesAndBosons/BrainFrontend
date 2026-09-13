@@ -489,6 +489,7 @@ math {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border: 1px solid #ddd;
+  cursor: zoom-in;
 
   /* Black and white effect */
   filter: grayscale(100%) brightness(1) contrast(1);
@@ -499,6 +500,42 @@ math {
 .paper-image:hover {
   filter: grayscale(100%) brightness(0.9) contrast(1.2);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Image lightbox */
+.image-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: zoom-out;
+  transition: background-color 250ms ease;
+  z-index: 1050;
+}
+
+.image-lightbox-overlay.open {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.image-lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  filter: grayscale(100%) brightness(1) contrast(1);
+  opacity: 0;
+  transform: scale(0.85);
+  cursor: zoom-out;
+  transition: transform 250ms ease, opacity 250ms ease;
+}
+
+.image-lightbox-overlay.open .image-lightbox-img {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* ================================================= */

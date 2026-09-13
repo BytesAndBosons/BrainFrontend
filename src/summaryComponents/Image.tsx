@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { NavigationContext } from "../contextProviders/NavigationContextProvider";
 
 
@@ -6,6 +6,16 @@ export const Image: React.FC<{ src: string, width: string, caption: string | nul
 
     const { navigation, setNavigation } = useContext(NavigationContext);
     const [image, setImage] = useState<Blob | null>(null);
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [lightboxVisible, setLightboxVisible] = useState(false);
+
+    const imageUrl = useMemo(() => (image ? URL.createObjectURL(image) : null), [image]);
+
+    useEffect(() => {
+        return () => {
+            if (imageUrl) URL.revokeObjectURL(imageUrl);
+        };
+    }, [imageUrl]);
 
 
     // Get the summary from the backend
@@ -46,14 +56,49 @@ export const Image: React.FC<{ src: string, width: string, caption: string | nul
         loadImage();
     }, [src]);
 
+    // Trigger the enlarge animation once the overlay has mounted
+    useEffect(() => {
+        if (lightboxOpen) {
+            const frame = requestAnimationFrame(() => setLightboxVisible(true));
+            return () => cancelAnimationFrame(frame);
+        }
+    }, [lightboxOpen]);
+
+    const closeLightbox = () => {
+        setLightboxVisible(false);
+    };
+
     return (
         <>
             {image &&
 
                 <figure className="figure mb-5 mt-3">
-                    <img src={URL.createObjectURL(image)} width={width} className="paper-image img-thumbnail" />
+                    <img
+                        src={imageUrl ?? undefined}
+                        width={width}
+                        className="paper-image img-thumbnail"
+                        onClick={() => setLightboxOpen(true)}
+                    />
                     {caption && <figcaption className="figure-caption mt-3"><b>Figure: </b>{caption}</figcaption>}
                 </figure>}
+
+            {lightboxOpen && (
+                <div
+                    className={`image-lightbox-overlay${lightboxVisible ? " open" : ""}`}
+                    onClick={closeLightbox}
+                    onTransitionEnd={(e) => {
+                        if (e.target === e.currentTarget && !lightboxVisible) {
+                            setLightboxOpen(false);
+                        }
+                    }}
+                >
+                    <img
+                        src={imageUrl ?? undefined}
+                        className="image-lightbox-img"
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                </div>
+            )}
         </>
     )
 }
