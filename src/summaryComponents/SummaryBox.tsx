@@ -8,7 +8,7 @@ interface SummaryBoxProps {
 export const SummaryBox: React.FC<SummaryBoxProps> = ({ title = 'Summary', children }) => {
   return (
     <div className="summary-box">
-      <div className="summary-box-head">{title}</div>
+      <div className="summary-box-head"><b>{title}</b></div>
       <div className="summary-box-body">
         {children}
       </div>
