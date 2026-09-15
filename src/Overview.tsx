@@ -12,7 +12,7 @@ import { useContext, useEffect, useState } from "react";
 export const Overview: React.FC = () => {
   const { isLoggedIn, setLoggedIn, names, setNames } = useContext(LoginContext);
 
-  const defaultIndex:IndexJSON = {};
+  const defaultIndex: IndexJSON = {};
   const [index, setIndex] = useState(defaultIndex);
 
   // Check whether user is logged in
@@ -22,13 +22,15 @@ export const Overview: React.FC = () => {
 
   // Load index.json
   useEffect(() => {
-    loadIndex().then(ind => setIndex(ind)).catch(err => console.log(err))
+    loadIndex()
+      .then((ind) => setIndex(ind))
+      .catch((err) => console.log(err));
   }, []);
 
   return (
     <>
       <Container className="d-flex flex-column min-vh-100 my-5">
-        <h1>Cheat Sheets</h1>
+        <h1>Scribbles</h1>
 
         {isLoggedIn ? (
           <p>
@@ -37,8 +39,7 @@ export const Overview: React.FC = () => {
           </p>
         ) : (
           <p>
-            On this page I collect personal cheat sheets for different coding
-            languages or frameworks.
+            On this page I collect personal <i>Scribbles</i> for coding languages or frameworks.
           </p>
         )}
 
@@ -46,7 +47,11 @@ export const Overview: React.FC = () => {
 
         <div className="d-flex flex-wrap gap-2">
           {Object.keys(index).map((key) => {
-            return (<ColorButton key={key} ref={key}>{index[key].title}</ColorButton>)
+            return (
+              <ColorButton key={key} ref={key}>
+                {index[key].title}
+              </ColorButton>
+            );
           })}
         </div>
       </Container>
