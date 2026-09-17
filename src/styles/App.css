@@ -367,6 +367,39 @@ ul ul {
   border-left-color: var(--accent-orange);
 }
 
+.snippet-body-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.snippet-body-wrapper.clamped {
+  max-height: 340px;
+}
+
+.snippet-body-wrapper.clamped::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(42, 42, 48, 0), #2A2A30);
+  pointer-events: none;
+}
+
+.snippet-card-footer {
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: none;
+  transition: background-color 120ms ease;
+}
+
+.snippet-card-footer:hover {
+  background-color: var(--paper-alt);
+}
+
 /* Inline code */
 code {
   background-color: rgba(197, 95, 58, 0.15);
