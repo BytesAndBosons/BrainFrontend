@@ -18,7 +18,7 @@ export const CodeSnippet: React.FC<{ lang: string | null, title: string | null, 
     if (ref.current) {
       text = ref.current.textContent ?? "";
 
-      setLineCount(text.split("\n").length);
+      setLineCount(text.trim().split("\n").length);
 
       // Create snippet styler
       let styler: Styler = new CodeStyler(lang ?? "default");
