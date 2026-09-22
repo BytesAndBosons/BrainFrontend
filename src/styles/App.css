@@ -563,12 +563,13 @@ math {
   opacity: 0;
   transform: scale(0.85);
   cursor: zoom-out;
-  transition: transform 250ms ease, opacity 250ms ease;
+  transition: transform 250ms ease, opacity 250ms ease, filter 600ms ease;
 }
 
 .image-lightbox-overlay.open .image-lightbox-img {
   opacity: 1;
   transform: scale(1);
+  filter: grayscale(0%) brightness(1) contrast(1);
 }
 
 /* ================================================= */
