@@ -54,7 +54,8 @@ export const Summary: React.FC = () => {
       }
 
       // Success
-      let tsxCode = (data as SummaryResponse).tsx;
+      // Prettier may prepend a ";" to the leading fragment, so we strip it
+      let tsxCode = (data as SummaryResponse).tsx.replace(/^\s*;+/, "");
 
       try {
 
