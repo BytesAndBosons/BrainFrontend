@@ -17,6 +17,37 @@ type SummaryResponse = {
 };
 
 
+// react-jsx-parser keeps JSX text verbatim, so a line break (e.g. inserted by Prettier) between text and an inline
+// element or punctuation turns into a visible space. Real JSX drops that whitespace, so we do the same here.
+const cleanJsxText = (text: string): string => {
+  if (!/[\r\n]/.test(text)) return text;
+
+  const lines = text.split(/\r\n|\n|\r/);
+  const lastNonEmpty = lines.reduce((last, line, i) => (/[^ \t]/.test(line) ? i : last), -1);
+
+  return lines
+    .map((line, i) => {
+      let trimmed = line.replace(/\t/g, " ");
+      if (i > 0) trimmed = trimmed.replace(/^ +/, "");
+      if (i < lines.length - 1) trimmed = trimmed.replace(/ +$/, "");
+      return trimmed && i !== lastNonEmpty ? `${trimmed} ` : trimmed;
+    })
+    .join("");
+};
+
+// Only touches text between tags/expressions; template literals (e.g. CodeSnippet contents) are left as they are.
+// react-jsx-parser also drops whitespace-only string expressions, so the explicit space `{" "}` is rewritten to the
+// equivalent entity `&#32;` (after the text cleanup above, so it is not trimmed away).
+const normalizeJsxWhitespace = (jsx: string): string =>
+  jsx
+    .split(/(`(?:\\[\s\S]|[^`\\])*`)/)
+    .map((part, i) =>
+      i % 2 === 1
+        ? part
+        : part.replace(/(?<=[>}])[^<>{}]+(?=[<{])/g, cleanJsxText).replace(/\{\s*(["'])\s+\1\s*\}/g, "&#32;")
+    )
+    .join("");
+
 export const Summary: React.FC = () => {
   const { navigation, setNavigation } = useContext(NavigationContext);
   const [error, setError] = useState<string | null>(null);
@@ -55,7 +86,7 @@ export const Summary: React.FC = () => {
 
       // Success
       // Prettier may prepend a ";" to the leading fragment, so we strip it
-      let tsxCode = (data as SummaryResponse).tsx.replace(/^\s*;+/, "");
+      let tsxCode = normalizeJsxWhitespace((data as SummaryResponse).tsx.replace(/^\s*;+/, ""));
 
       try {
 
