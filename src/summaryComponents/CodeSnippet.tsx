@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { PdfExportContext } from "../contextProviders/PdfExportContext";
 import { CodeStyler, Styler } from "./scripts/CodeStyler";
 
 // Number of lines shown before the snippet is collapsed behind a "Show more" toggle
@@ -10,6 +11,7 @@ export const CodeSnippet: React.FC<{ lang: string | null, title: string | null, 
   const [expanded, setExpanded] = useState(false);
   const [lineCount, setLineCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+  const { expandAll } = useContext(PdfExportContext);
 
   const stylizeText = () => {
 
@@ -34,7 +36,7 @@ export const CodeSnippet: React.FC<{ lang: string | null, title: string | null, 
   useEffect(() => stylizeText(), [children, lang]);
 
   const isLong = lineCount > LINE_THRESHOLD;
-  const isClamped = isLong && !expanded;
+  const isClamped = isLong && !expanded && !expandAll;
 
   const copyText = () => {
     setEmoji('✅');
@@ -58,13 +60,13 @@ export const CodeSnippet: React.FC<{ lang: string | null, title: string | null, 
         </div>
       </div >
       <div className={`snippet-body-wrapper${isClamped ? ' clamped' : ''}`}>
-        <div className={`card-body snippet-card-body${isLong ? '' : ' rounded-bottom'}`} ref={ref}>
+        <div className={`card-body snippet-card-body${isLong && !expandAll ? '' : ' rounded-bottom'}`} ref={ref}>
           <pre>
             {children}
           </pre>
         </div>
       </div>
-      {isLong && (
+      {isLong && !expandAll && (
         <div
           className="card-head snippet-card-head snippet-card-footer rounded-bottom"
           onClick={() => setExpanded(!expanded)}

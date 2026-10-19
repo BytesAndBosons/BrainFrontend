@@ -144,7 +144,7 @@ export const Summary: React.FC = () => {
       {Component && (
         <div className="d-flex justify-content-end mb-3 d-print-none">
           <Button className="btn-primary btn-pdf-download" onClick={handlePrint} disabled={preparingPrint}>
-            {preparingPrint ? "Preparing…" : "Download PDF"}
+            {preparingPrint ? "Preparing…" : "Create PDF"}
           </Button>
         </div>
       )}

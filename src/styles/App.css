@@ -629,17 +629,18 @@ math {
 /* Print (Download PDF)                             */
 /* ================================================= */
 @page {
-  /* Zero page margin lets the background paint edge-to-edge; the content
-     itself gets inset via the .container padding below instead. */
-  margin: 0.5cm;
-  background-color: var(--paper-alt);
+  /* Firefox doesn't paint the page background into the page margin, which
+     shows up as a white frame. With no margin the background covers the
+     whole sheet; the spacing is added as container padding instead. */
+  margin: 0;
 }
 
 @media print {
 
+  /* Paper colour behind everything, so nothing renders white */
   html,
   body {
-    background-color: #fff;
+    background-color: var(--paper-alt) !important;
   }
 
   /* Browsers drop background colors/images by default when printing */
@@ -650,12 +651,18 @@ math {
 
   /* The print engine emulates a narrow viewport, so Bootstrap's responsive
      container breakpoints clamp it to a small max-width (e.g. 540px) well
-     below the actual printable page width. Let it fill the page instead. */
+     below the actual printable page width. Let it fill the page instead.
+     The padding provides the inset, since the page margin is 0. */
   .container {
+    display: block !important;
     min-height: auto !important;
     max-width: none !important;
     width: 100% !important;
-    padding: 0.5cm !important;
+    margin: 0 !important;
+    padding: 1cm !important;
+    /* Repeat the padding on every page the container is split across */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 
   /* Guard against printing mid-transition, in case the accordion's
@@ -666,17 +673,17 @@ math {
     visibility: visible !important;
   }
 
-  /* Each AccordionSection renders its own <Accordion> wrapper, so starting
-     a new page there (rather than on .accordion-item) puts every section
-     on its own page. Skip it for a section that's already first on the
-     page, to avoid a blank leading page. */
-  .accordion {
-    break-before: page;
-    page-break-before: always;
+  /* Let sections flow continuously instead of one per page (which left
+     most pages mostly empty), but keep small blocks from splitting. */
+  .summary-box,
+  .custom-table,
+  figure,
+  pre,
+  .accordion-button {
+    break-inside: avoid;
   }
 
-  .accordion:first-child {
-    break-before: avoid;
-    page-break-before: avoid;
+  .accordion-button {
+    break-after: avoid;
   }
 }
