@@ -339,13 +339,6 @@ ul ul {
   line-height: 1.6; /* Match body line-height */
 }
 
-.summary-box-body figcaption {
-  color: #EDEDED;
-}
-.summary-box-body .figure-caption {
-  color: #EDEDED;
-}
-
 /* Use default browser list styling for normal spacing */
 .summary-box-body ul,
 .summary-box-body ol {
