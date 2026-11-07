@@ -18,7 +18,7 @@ export const Login = () => {
     const password = formData.get("password") ?? "";
 
     const response = await fetch(
-      "https://brain.lucschnell.ch/backend/login.php",
+      "/backend/login.php",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

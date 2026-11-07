@@ -5,7 +5,7 @@ export interface LoginResponse {
   
 export async function checkLoggedIn(setLoggedIn: (_: boolean) => void,setNames: (_: (string | null)[]) => void){
     const response = await fetch(
-      "https://brain.lucschnell.ch/backend/login.php",
+      "/backend/login.php",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

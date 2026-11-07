@@ -10,4 +10,15 @@ export default defineConfig({
     // bundle. Skip pre-bundling it and let it load as-is.
     exclude: ['latex.js'],
   },
+  server: {
+    // The frontend calls the backend via relative /backend/... URLs. In dev,
+    // forward those to the production backend so requests stay same-origin.
+    proxy: {
+      '/backend': {
+        target: 'https://brain.lucschnell.ch',
+        changeOrigin: true,
+        cookieDomainRewrite: '',
+      },
+    },
+  },
 })

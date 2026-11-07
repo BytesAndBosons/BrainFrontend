@@ -61,7 +61,7 @@ export const Summary: React.FC = () => {
 
     try {
       const response = await fetch(
-        "https://brain.lucschnell.ch/backend/get-summary.php",
+        "/backend/get-summary.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

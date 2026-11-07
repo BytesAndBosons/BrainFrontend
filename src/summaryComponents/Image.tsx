@@ -23,7 +23,7 @@ export const Image: React.FC<{ src: string, width: string, caption: string | nul
 
         try {
             const response = await fetch(
-                "https://brain.lucschnell.ch/backend/get-image.php",
+                "/backend/get-image.php",
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },

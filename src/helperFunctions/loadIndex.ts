@@ -12,7 +12,7 @@ export interface IndexJSON {
 export async function loadIndex():Promise<IndexJSON> {
     
     const response = await fetch(
-      "https://brain.lucschnell.ch/backend/get-index.php",
+      "/backend/get-index.php",
       {
         method: "GET",
       }

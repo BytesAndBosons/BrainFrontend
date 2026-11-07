@@ -22,7 +22,7 @@ const logout = async (
   setNames: (_: (string | null)[]) => void
 ) => {
   const response = await fetch(
-    "https://brain.lucschnell.ch/backend/logout.php",
+    "/backend/logout.php",
     {
       method: "POST",
     }
