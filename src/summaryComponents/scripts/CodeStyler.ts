@@ -130,8 +130,8 @@ export class GenericCodeStyler {
             text = text.slice(0, -1);
         }
 
-        // Eat away whitespaces after each newline to match linedepth
-        text = text.replaceAll("\n" + " ".repeat(lineDepth-1), " \n");
+        // Eat away whitespaces after each newline to match linedepth (clamped, since unindented text has lineDepth 0)
+        text = text.replaceAll("\n" + " ".repeat(Math.max(lineDepth - 1, 0)), " \n");
 
         return text + " ";
     }
